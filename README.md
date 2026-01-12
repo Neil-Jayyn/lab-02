@@ -2,8 +2,8 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Neila Khudaibergenova`
+- **CCID:** `nkhudaib`
 
 ## References and Resources
 
