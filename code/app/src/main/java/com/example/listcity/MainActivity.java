@@ -1,10 +1,15 @@
 package com.example.listcity;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     Button addButton;
     Button deleteButton;
+    Button confirmButton;
+
+    EditText cityTextbox;
+    LinearLayout confirmLayout;
 
 
 
@@ -40,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        //--LAB DEMO LISTVIEW stuff
         cityList=findViewById(R.id.city_list);
 
         String []cities={"Edmonton", "Vancouver", "Moscow","Sydney","Tokyo","Beijing", "Almaty", "Astana", "New Delhi"};
@@ -51,21 +60,39 @@ public class MainActivity extends AppCompatActivity {
         cityAdapter=new ArrayAdapter<>(this, R.layout.content,dataList);
         cityList.setAdapter(cityAdapter);
 
+        //--BUTTON FUNCTIONALITY
         addButton=findViewById(R.id.add_button);
         deleteButton=findViewById(R.id.delete_button);
+
+        confirmButton=findViewById(R.id.confirm_button);
+        confirmLayout=findViewById(R.id.confirm_layout);
+        cityTextbox=findViewById(R.id.city_textbox);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Buttons","Add button clicked");
-                dataList.remove();
+               //Show Confirm Layout that has textbox + confirm button
+                confirmLayout.setVisibility(VISIBLE);
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get value of textbox
+                String cityText=String.valueOf(cityTextbox.getText());
+                //add city to list & update listview
+                dataList.add(cityText);
+                cityAdapter.notifyDataSetChanged();
+                //hide confirm layout
+                confirmLayout.setVisibility(INVISIBLE);
             }
         });
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Buttons","Delete button clicked");
+                //tap city then press delete button to delete the list
             }
         });
 

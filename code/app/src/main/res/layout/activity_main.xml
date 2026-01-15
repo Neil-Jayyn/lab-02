@@ -15,7 +15,7 @@
         <Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:title="List City"
+            android:title="@string/list_city"
             android:background="?attr/colorPrimary"
             android:titleTextColor="@color/white">
 
@@ -30,23 +30,47 @@
                 android:id="@+id/add_button"
                 android:layout_width="197dp"
                 android:layout_height="71dp"
-                android:text="Add+"
+                android:text="@string/add"
                 />
 
             <Button
                 android:id="@+id/delete_button"
                 android:layout_width="211dp"
                 android:layout_height="74dp"
-                android:text="Delete-" />
+                android:text="@string/delete" />
 
         </LinearLayout>
 
         <ListView
             android:id="@+id/city_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="493dp" />
 
-        </ListView>
+        <LinearLayout
+            android:id="@+id/confirm_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <EditText
+                android:id="@+id/city_textbox"
+                android:layout_width="245dp"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:inputType="text"
+                android:text="Type Here"
+                android:textStyle="normal"
+                android:layout_gravity="top">
+            </EditText>
+
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="173dp"
+                android:layout_height="77dp"
+                android:text="CONFIRM"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 
