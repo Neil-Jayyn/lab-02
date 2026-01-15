@@ -6,6 +6,7 @@ import static android.view.View.VISIBLE;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText cityTextbox;
     LinearLayout confirmLayout;
-
-
+    Integer deletePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +89,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // WHAT HAPPENS when clicked
+                deletePosition=position;
+
+            }
+        });
+
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //tap city then press delete button to delete the list
+                if(deletePosition != null){
+                    cityAdapter.remove(cityAdapter.getItem(deletePosition));
+                    deletePosition=null;
+                }
             }
         });
 
